@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Umutcan Evişmek</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background:linear-gradient(135deg,#0f172a,#1e293b,#111827);
+    color:white;
+    min-height:100vh;
+}
+
+.container{
+    width:90%;
+    max-width:1000px;
+    margin:auto;
+}
+
+.hero{
+    text-align:center;
+    padding:100px 20px 40px;
+}
+
+.hero h1{
+    font-size:4rem;
+    margin-bottom:10px;
+}
+
+.hero p{
+    font-size:1.3rem;
+    color:#cbd5e1;
+    margin-bottom: 25px;
+}
+
+/* Sosyal Medya İkon Alanı Düzenlemeleri */
+.social-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px; /* İkonlar arası eşit mesafeyi sağlar */
+}
+
+.social-links a {
+    text-decoration: none; /* Alt çizgiyi (mor çizgiyi) kesin olarak kaldırır */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease;
+}
+
+.social-links a:hover {
+    transform: translateY(-3px); /* Üzerine gelindiğinde hafif yukarı kayma efekti */
+}
+
+.social-links img {
+    display: block; /* Alt boşluk oluşmasını engeller */
+    border-radius: 6px; /* İkon köşelerini hafif yuvarlatır */
+}
+
+.card{
+    background:rgba(255,255,255,0.08);
+    backdrop-filter:blur(10px);
+    border-radius:20px;
+    padding:30px;
+    margin:25px 0;
+    text-align:center;
+}
+
+.card h2{
+    color:#60a5fa;
+    margin-bottom:15px;
+}
+
+.skills{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:15px;
+}
+
+.skill{
+    background:#2563eb;
+    padding:10px 20px;
+    border-radius:50px;
+}
+
+footer{
+    text-align:center;
+    padding:40px;
+    color:#94a3b8;
+}
+
+.card a{
+    color:#60a5fa;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.card a:hover{
+    text-decoration:underline;
+}
+
+</style>
+</head>
+<body>
+
+<div class="container">
+
+    <section class="hero">
+        <h1>Umutcan Evişmek</h1>
+        <p>Öğrenci • Yazılım Geliştirici Adayı • Oyun Geliştirici</p>
+
+        <div class="social-links">
+            <a href="https://www.instagram.com/u1m9tcan/" target="_blank"><img src="images/instagram.png" alt="Instagram" width="35" height="35"></a>
+
+            <a href="https://x.com/SQXumutcan" target="_blank"><img src="images/x.png" alt="X" width="30" height="30"></a>
+
+            <a href="https://steamcommunity.com/profiles/76561199866969702/" target="_blank"><img src="images/steam.png" alt="Steam" width="30" height="30"></a>
+
+            <a href="https://github.com/UmutcanEvismek52" target="_blank"><img src="images/github.png" alt="GitHub" width="30" height="30"></a>
+        </div>
+    </section>
+
+    <div class="card">
+        <h2>Hakkımda</h2>
+        <p>
+            Merhaba, ben Umutcan Evişmek. 17 yaşındayım. 13.11.2009 tarihinde Ordu'nun Fatsa ilçesinde doğdum. İstanbul'da yaşıyorum.
+            Genel olarak oyun geliştirmek ve Blender üzerinden modelleme çalışıyorum.
+        </p>
+    </div>
+
+    <div class="card">
+        <h2>Yetenekler</h2>
+
+        <div class="skills">
+            <div class="skill">C#</div>
+            <div class="skill">MySQL</div>
+            <div class="skill">Unity</div>
+            <div class="skill">Unreal Engine 5</div>
+            <div class="skill">GitHub</div>
+            <div class="skill">HTML</div>
+            <div class="skill">CSS</div>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>İletişim</h2>
+        <p>
+            E-posta:
+            <a href="mailto:umutcanevismek@gmail.com">
+                umutcanevismek@gmail.com
+            </a>
+        </p>
+
+        <p>
+            WhatsApp:
+            <a href="https://wa.me/5496119010" target="_blank">
+                WhatsApp'tan İletişime Geç
+            </a>
+        </p>
+    </div>
+</div>
+
+<footer>
+    © 2026 Umutcan Evişmek
+</footer>
+
+</body>
+</html>
