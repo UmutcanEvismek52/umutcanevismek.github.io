@@ -1,179 +1,565 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Umutcan Evişmek</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Umutcan Evişmek | Portfolyo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #08090a;
+            --card-bg: rgba(18, 20, 26, 0.7);
+            --card-border: rgba(255, 255, 255, 0.08);
+            --accent-glow: #6366f1;
+            --accent-cyan: #06b6d4;
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+        }
 
-<style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial, sans-serif;
-}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
 
-body{
-    background:linear-gradient(135deg,#0f172a,#1e293b,#111827);
-    color:white;
-    min-height:100vh;
-}
+        html {
+            scroll-behavior: smooth;
+        }
 
-.container{
-    width:90%;
-    max-width:1000px;
-    margin:auto;
-}
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 15% 15%, rgba(99, 102, 241, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 85% 65%, rgba(6, 182, 212, 0.12) 0%, transparent 40%);
+            background-attachment: fixed;
+        }
 
-.hero{
-    text-align:center;
-    padding:100px 20px 40px;
-}
+        /* Glassmorphism Header */
+        header {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 1000px;
+            background: rgba(13, 15, 20, 0.65);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--card-border);
+            border-radius: 99px;
+            z-index: 1000;
+            padding: 10px 24px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+        }
 
-.hero h1{
-    font-size:4rem;
-    margin-bottom:10px;
-}
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-.hero p{
-    font-size:1.3rem;
-    color:#cbd5e1;
-    margin-bottom: 25px;
-}
+        .logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            background: linear-gradient(135deg, #a5b4fc, #38bdf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+        }
 
-/* Sosyal Medya İkon Alanı Düzenlemeleri */
-.social-links {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 15px; /* İkonlar arası eşit mesafeyi sağlar */
-}
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
 
-.social-links a {
-    text-decoration: none; /* Alt çizgiyi (mor çizgiyi) kesin olarak kaldırır */
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    transition: transform 0.2s ease;
-}
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
 
-.social-links a:hover {
-    transform: translateY(-3px); /* Üzerine gelindiğinde hafif yukarı kayma efekti */
-}
+        .nav-links a:hover {
+            color: #fff;
+            text-shadow: 0 0 10px rgba(255,255,255,0.5);
+        }
 
-.social-links img {
-    display: block; /* Alt boşluk oluşmasını engeller */
-    border-radius: 6px; /* İkon köşelerini hafif yuvarlatır */
-}
+        /* Container Layout */
+        .container {
+            max-width: 950px;
+            margin: 140px auto 60px;
+            padding: 0 20px;
+        }
 
-.card{
-    background:rgba(255,255,255,0.08);
-    backdrop-filter:blur(10px);
-    border-radius:20px;
-    padding:30px;
-    margin:25px 0;
-    text-align:center;
-}
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 40px 0 60px;
+            position: relative;
+        }
 
-.card h2{
-    color:#60a5fa;
-    margin-bottom:15px;
-}
+        .hero-badge {
+            display: inline-block;
+            padding: 6px 16px;
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: #a5b4fc;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
 
-.skills{
-    display:flex;
-    flex-wrap:wrap;
-    justify-content:center;
-    gap:15px;
-}
+        .hero h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 16px;
+            background: linear-gradient(180deg, #ffffff 0%, #94a3b8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
 
-.skill{
-    background:#2563eb;
-    padding:10px 20px;
-    border-radius:50px;
-}
+        .hero p {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 30px;
+            line-height: 1.6;
+        }
 
-footer{
-    text-align:center;
-    padding:40px;
-    color:#94a3b8;
-}
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+        }
 
-.card a{
-    color:#60a5fa;
-    text-decoration:none;
-    font-weight:bold;
-}
+        .social-icon-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--card-border);
+            border-radius: 14px;
+            transition: all 0.3s ease;
+        }
 
-.card a:hover{
-    text-decoration:underline;
-}
+        .social-icon-btn:hover {
+            transform: translateY(-4px);
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+        }
 
-</style>
+        .social-icon-btn img {
+            width: 22px;
+            height: 22px;
+            object-fit: contain;
+        }
+
+        /* Stats Section */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-bottom: 60px;
+        }
+
+        .stat-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            padding: 24px;
+            border-radius: 18px;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 2px;
+            background: linear-gradient(90deg, transparent, var(--accent-glow), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .stat-card:hover::before {
+            opacity: 1;
+        }
+
+        .stat-card h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.8rem;
+            color: #fff;
+            margin-bottom: 4px;
+        }
+
+        .stat-card p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* Main Section Cards */
+        .section-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 24px;
+            padding: 40px;
+            margin-bottom: 30px;
+            backdrop-filter: blur(12px);
+            scroll-margin-top: 100px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .section-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .about-text {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: #d1d5db;
+        }
+
+        .about-text strong {
+            color: #38bdf8;
+        }
+
+        /* Skills Pill Layout */
+        .skills-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skill-pill {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--card-border);
+            padding: 10px 18px;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            color: #e2e8f0;
+            transition: all 0.3s ease;
+        }
+
+        .skill-pill:hover {
+            border-color: var(--accent-glow);
+            background: rgba(99, 102, 241, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Dynamic Grid for Projects & Design */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .nested-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.3s ease;
+        }
+
+        .nested-card:hover {
+            background: rgba(255, 255, 255, 0.04);
+            border-color: rgba(255, 255, 255, 0.15);
+            transform: translateY(-4px);
+        }
+
+        .nested-card h3 {
+            font-size: 1.15rem;
+            color: #f3f4f6;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nested-card p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .tag-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .tag-badge {
+            background: rgba(56, 189, 248, 0.1);
+            color: #38bdf8;
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+
+        /* Contact Section */
+        .contact-links {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1rem;
+            color: var(--text-muted);
+        }
+
+        .contact-item a {
+            color: #38bdf8;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+
+        .contact-item a:hover {
+            color: #7dd3fc;
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            font-size: 0.85rem;
+            color: #6b7280;
+            border-top: 1px solid var(--card-border);
+            margin-top: 60px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header {
+                width: 95%;
+                padding: 8px 16px;
+            }
+            .nav-links {
+                gap: 12px;
+            }
+            .nav-links a {
+                font-size: 0.75rem;
+            }
+            .hero h1 {
+                font-size: 2.4rem;
+            }
+            .section-card {
+                padding: 24px;
+            }
+        }
+    </style>
 </head>
 <body>
 
-<div class="container">
+    <header>
+        <nav>
+            <a href="#" class="logo">UE</a>
+            <ul class="nav-links">
+                <li><a href="#hakkimda">Hakkımda</a></li>
+                <li><a href="#yetenekler">Yetenekler</a></li>
+                <li><a href="#tasarim">Tasarım & Sanat</a></li>
+                <li><a href="#projeler">Projeler</a></li>
+                <li><a href="#iletisim">İletişim</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    <section class="hero">
-        <h1>Umutcan Evişmek</h1>
-        <p>Öğrenci • Yazılım Geliştirici Adayı • Oyun Geliştirici</p>
+    <div class="container">
 
-        <div class="social-links">
-            <a href="https://www.instagram.com/u1m9tcan/" target="_blank"><img src="images/instagram.png" alt="Instagram" width="35" height="35"></a>
+        <!-- Hero Section -->
+        <section class="hero">
+            <span class="hero-badge">Geliştirici & Sanatçı</span>
+            <h1>Umutcan Evişmek</h1>
+            <p>Oyun Geliştirici • 3D & Pixel Artist • Yazılım Öğrencisi</p>
 
-            <a href="https://x.com/SQXumutcan" target="_blank"><img src="images/x.png" alt="X" width="30" height="30"></a>
+            <div class="social-links">
+                <a href="https://www.instagram.com/u1m9tcan/" target="_blank" class="social-icon-btn">
+                    <img src="images/instagram.png" alt="Instagram">
+                </a>
+                <a href="https://x.com/SQXumutcan" target="_blank" class="social-icon-btn">
+                    <img src="images/x.png" alt="X">
+                </a>
+                <a href="https://steamcommunity.com/profiles/76561199866969702/" target="_blank" class="social-icon-btn">
+                    <img src="images/steam.png" alt="Steam">
+                </a>
+                <a href="https://github.com/UmutcanEvismek52" target="_blank" class="social-icon-btn">
+                    <img src="images/github.png" alt="GitHub">
+                </a>
+            </div>
+        </section>
 
-            <a href="https://steamcommunity.com/profiles/76561199866969702/" target="_blank"><img src="images/steam.png" alt="Steam" width="30" height="30"></a>
-
-            <a href="https://github.com/UmutcanEvismek52" target="_blank"><img src="images/github.png" alt="GitHub" width="30" height="30"></a>
+        <!-- Dynamic Quick Stats -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <h3>17</h3>
+                <p>Yaş</p>
+            </div>
+            <div class="stat-card">
+                <h3>Unity & UE5</h3>
+                <p>Oyun Motorları</p>
+            </div>
+            <div class="stat-card">
+                <h3>Blender & Aseprite</h3>
+                <p>3D Modelller & Pixel Art</p>
+            </div>
+            <div class="stat-card">
+                <h3>İstanbul</h3>
+                <p>Lokasyon</p>
+            </div>
         </div>
-    </section>
 
-    <div class="card">
-        <h2>Hakkımda</h2>
-        <p>
-            Merhaba, ben Umutcan Evişmek. 17 yaşındayım. 13.11.2009 tarihinde Ordu'nun Fatsa ilçesinde doğdum. İstanbul'da yaşıyorum.
-            Genel olarak oyun geliştirmek ve Blender üzerinden modelleme çalışıyorum.
-        </p>
+        <!-- Hakkımda -->
+        <section class="section-card" id="hakkimda">
+            <div class="section-header">
+                <h2 class="section-title">Hakkımda</h2>
+            </div>
+            <p class="about-text">
+                Merhaba, ben Umutcan Evişmek. 13 Kasım 2009 tarihinde Ordu'nun Fatsa ilçesinde doğdum, şu an yaşamımı İstanbul'da sürdürüyorum. 
+                Oyun dünyasına ve dijital sanata duymuş olduğum merak sayesinde erken yaşta yazılım ve tasarım alanına yöneldim. 
+                C# ve C++ dilleriyle oyun kodluyorum Unreal Engine 5 ve Unity motorlarında mekanik projeler yapıyorum. 
+                Tasarımlarımda ise 3D sahneler ve objeler için <strong>Blender</strong>, 2D oyun grafikleri, karakter animasyonları ve sprite tasarımları için <strong>Aseprite</strong> kullanıyorum.
+            </p>
+        </section>
+
+        <!-- Yetenekler -->
+        <section class="section-card" id="yetenekler">
+            <div class="section-header">
+                <h2 class="section-title">Yetenekler & Teknolojiler</h2>
+            </div>
+            <div class="skills-wrapper">
+                <div class="skill-pill">C#</div>
+                <div class="skill-pill">C++</div>
+                <div class="skill-pill">Unity</div>
+                <div class="skill-pill">Unreal Engine 5</div>
+                <div class="skill-pill">Blender (3D Modelleme)</div>
+                <div class="skill-pill">Aseprite (Pixel Art & Animasyon)</div>
+                <div class="skill-pill">MySQL (Veritabanı)</div>
+                <div class="skill-pill">HTML5 & CSS3</div>
+                <div class="skill-pill">Git & GitHub</div>
+            </div>
+        </section>
+
+        <!-- Tasarım & Sanat -->
+        <section class="section-card" id="tasarim">
+            <div class="section-header">
+                <h2 class="section-title">Tasarım & Görsel Üretim</h2>
+            </div>
+            <div class="card-grid">
+                <div class="nested-card">
+                    <div>
+                        <h3>🎨 3D Modelleme & Çevre Tasarımı</h3>
+                        <p>Blender kullanarak oyun içi obje (prop) modelleme, Low-Poly / High-Poly asset üretimi ve atmospheric sahne tasarımları gerçekleştiriyorum.</p>
+                    </div>
+                    <div class="tag-container">
+                        <span class="tag-badge">Blender</span>
+                        <span class="tag-badge">Low-Poly</span>
+                        <span class="tag-badge">3D Assets</span>
+                    </div>
+                </div>
+
+                <div class="nested-card">
+                    <div>
+                        <h3>👾 Pixel Art & Sprite Animasyonu</h3>
+                        <p>Aseprite üzerinde 2D oyunlar için karakter tasarımları, tileset'ler, kullanıcı arayüzü (UI) öğeleri ve kare kare (frame-by-frame) animasyonlar hazırlıyorum.</p>
+                    </div>
+                    <div class="tag-container">
+                        <span class="tag-badge">Aseprite</span>
+                        <span class="tag-badge">Pixel Art</span>
+                        <span class="tag-badge">2D Sprite</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Yazılım & Oyun Geliştirme -->
+        <section class="section-card" id="projeler">
+            <div class="section-header">
+                <h2 class="section-title">Yazılım & Oyun Geliştirme</h2>
+            </div>
+            <div class="card-grid">
+                <div class="nested-card">
+                    <div>
+                        <h3>🎮 Oyun Mekaniği & Algoritma Prototipleri</h3>
+                        <p>Unity (C#) ve Unreal Engine 5 (C++ / Blueprints) mimarilerinde oyuncu fiziği, yapay zeka (AI) mantığı ve envanter/savaş sistemleri üzerinde çalışıyorum.</p>
+                    </div>
+                    <div class="tag-container">
+                        <span class="tag-badge">C#</span>
+                        <span class="tag-badge">C++</span>
+                        <span class="tag-badge">Unity</span>
+                        <span class="tag-badge">UE5</span>
+                    </div>
+                </div>
+
+                <div class="nested-card">
+                    <div>
+                        <h3>🌐 Web & Veri Yönetimi</h3>
+                        <p>Kişisel portfolyo arayüzleri, MySQL tabanlı veri kaydetme/yükleme yapıları ve temel seviyede web entegrasyonları kurguluyorum.</p>
+                    </div>
+                    <div class="tag-container">
+                        <span class="tag-badge">HTML/CSS</span>
+                        <span class="tag-badge">MySQL</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- İletişim -->
+        <section class="section-card" id="iletisim">
+            <div class="section-header">
+                <h2 class="section-title">İletişim</h2>
+            </div>
+            <div class="contact-links">
+                <div class="contact-item">
+                    <strong>E-posta:</strong>
+                    <a href="mailto:umutcanevismek@gmail.com">umutcanevismek@gmail.com</a>
+                </div>
+                <div class="contact-item">
+                    <strong>WhatsApp:</strong>
+                    <a href="https://wa.me/5496119010" target="_blank">WhatsApp'tan İletişime Geç</a>
+                </div>
+            </div>
+        </section>
+
     </div>
 
-    <div class="card">
-        <h2>Yetenekler</h2>
-
-        <div class="skills">
-            <div class="skill">C#</div>
-            <div class="skill">C++</div>
-            <div class="skill">MySQL</div>
-            <div class="skill">Unity</div>
-            <div class="skill">Unreal Engine 5</div>
-            <div class="skill">GitHub</div>
-            <div class="skill">HTML</div>
-            <div class="skill">CSS</div>
-        </div>
-    </div>
-
-    <div class="card">
-        <h2>İletişim</h2>
-        <p>
-            E-posta:
-            <a href="mailto:umutcanevismek@gmail.com">
-                umutcanevismek@gmail.com
-            </a>
-        </p>
-
-        <p>
-            WhatsApp:
-            <a href="https://wa.me/5496119010" target="_blank">
-                WhatsApp'tan İletişime Geç
-            </a>
-        </p>
-    </div>
-</div>
-
-<footer>
-    © 2026 Umutcan Evişmek
-</footer>
+    <footer>
+        © 2026 Umutcan Evişmek • GitHub Pages Portfolyosu
+    </footer>
 
 </body>
 </html>
